@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Linux Academy | Log In</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+</head>
+
+<body>
+	<!--[if IE 8]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/ie8/0.2.5/ie8.js"></script>
+  <![endif]-->
+
+	<!--[if lte IE 9]>
+  <script src="https://cdn.auth0.com/js/base64.js"></script>
+  <script src="https://cdn.auth0.com/js/es5-shim.min.js"></script>
+  <![endif]-->
+
+	<script src="https://cdn.auth0.com/js/lock/11.3/lock.min.js"></script>
+	<script>
+		// Decode utf8 characters properly
+    var config = JSON.parse(decodeURIComponent(escape(window.atob('eyJpY29uIjoiaHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL2RlbW8tYWQtbG9naW4vX2Fzc2V0cy9pbWcvcGluZWhlYWQucG5nIiwiYXNzZXRzVXJsIjoiIiwiYXV0aDBEb21haW4iOiJsb2dpbi5saW51eGFjYWRlbXkuY29tIiwiYXV0aDBUZW5hbnQiOiJsYWNhdXNlcnMiLCJjbGllbnRDb25maWd1cmF0aW9uQmFzZVVybCI6Imh0dHBzOi8vY2RuLmF1dGgwLmNvbS8iLCJjYWxsYmFja09uTG9jYXRpb25IYXNoIjp0cnVlLCJjYWxsYmFja1VSTCI6Imh0dHBzOi8vbGludXhhY2FkZW15LmNvbS9jcC9zc29sb2dpbiIsImNkbiI6Imh0dHBzOi8vc2RrLmF1dGgwLmNvbS8iLCJjbGllbnRJRCI6IkthV3hObjFDMkdjN244M1c5T0ZlWGx0ZDhVdGI1dnZ4IiwiZGljdCI6eyJzaWduaW4iOnsidGl0bGUiOiJMaW51eEFjYWRlbXkgLyBDbG91ZCBBc3Nlc3NtZW50cyJ9fSwiZXh0cmFQYXJhbXMiOnsicHJvdG9jb2wiOiJvYXV0aDIiLCJyZXNwb25zZV90eXBlIjoidG9rZW4iLCJfY3NyZiI6IlBMQmF3TFZyLUQyVGpPOVZMRWczbXhhaWxoaVgxdmthN1UyMCIsIl9pbnRzdGF0ZSI6ImRlcHJlY2F0ZWQiLCJzdGF0ZSI6Imc2Rm8yU0F5WVhkcmFWOWFlR3ROVHpWaFUyWk5iMDF3UmpsdU4zcG5ibXhGV1dvME5hTjBhV1RaSUdaQmFIWk5hMXA1YzJ0MFZsQXphR3RaZVhreWFXVlVaRkZqUzBjdGVVdHVvMk5wWk5rZ1MyRlhlRTV1TVVNeVIyTTNiamd6VnpsUFJtVlliSFJrT0ZWMFlqVjJkbmcifSwiaW50ZXJuYWxPcHRpb25zIjp7InByb3RvY29sIjoib2F1dGgyIiwicmVzcG9uc2VfdHlwZSI6InRva2VuIiwiX2NzcmYiOiJQTEJhd0xWci1EMlRqTzlWTEVnM214YWlsaGlYMXZrYTdVMjAiLCJfaW50c3RhdGUiOiJkZXByZWNhdGVkIiwic3RhdGUiOiJnNkZvMlNBeVlYZHJhVjlhZUd0TlR6VmhVMlpOYjAxd1JqbHVOM3BuYm14RldXbzBOYU4wYVdUWklHWkJhSFpOYTFwNWMydDBWbEF6YUd0WmVYa3lhV1ZVWkZGalMwY3RlVXR1bzJOcFpOa2dTMkZYZUU1dU1VTXlSMk0zYmpnelZ6bFBSbVZZYkhSa09GVjBZalYyZG5nIn0sIndpZGdldFVybCI6Imh0dHBzOi8vY2RuLmF1dGgwLmNvbS93Mi9hdXRoMC13aWRnZXQtNS4xLm1pbi5qcyIsImlzVGhpcmRQYXJ0eUNsaWVudCI6ZmFsc2UsImF1dGhvcml6YXRpb25TZXJ2ZXIiOnsidXJsIjoiaHR0cHM6Ly9sb2dpbi5saW51eGFjYWRlbXkuY29tIiwiaXNzdWVyIjoiaHR0cHM6Ly9sb2dpbi5saW51eGFjYWRlbXkuY29tLyJ9LCJjb2xvcnMiOnt9fQ=='))));
+    config.extraParams = config.extraParams || {};
+    var connection = config.connection;
+    var prompt = config.prompt;
+    var languageDictionary;
+    var language;
+    
+    var urlOption = window.location.hash;
+    var pane = 'login';
+    if(config.extraParams.sign_up == 'true') {
+      pane = "signUp";
+    }
+    var domainUsed = window.location.origin;
+    if (domainUsed == 'https://login.linuxacademy.com') {
+      var laOverrides = {
+        	__tenant: config.auth0Tenant,
+  	      __token_issuer: 'login.linuxacademy.com'
+        };
+    } else {
+        laOverrides = {};
+    }
+  /*  
+  configurationBaseUrl: config.clientConfigurationBaseUrl,
+  overrides: {
+  	__tenant: config.auth0Tenant,
+  	__token_issuer: 'YOUR_CUSTOM_DOMAIN'
+  },
+*/
+    if (config.dict && config.dict.signin && config.dict.signin.title) {
+      languageDictionary = { title: config.dict.signin.title };
+    } else if (typeof config.dict === 'string') {
+      language = config.dict;
+    }
+    var loginHint = config.extraParams.login_hint;
+
+    var lock = new Auth0Lock(config.clientID, config.auth0Domain, {
+      auth: {
+        redirectUrl: config.callbackURL,
+        responseType: (config.internalOptions || {}).response_type ||
+          config.callbackOnLocationHash ? 'token' : 'code',
+        params: config.internalOptions
+      },
+      initialScreen: pane,
+      assetsUrl:  config.assetsUrl,
+      allowedConnections: connection ? [connection] : null,
+      rememberLastLogin: !prompt,
+      language: language,
+      languageDictionary: languageDictionary,
+      configurationBaseUrl: config.clientConfigurationBaseUrl,
+      overrides: laOverrides,
+      theme: {
+        logo:            'https://s3.amazonaws.com/demo-ad-login/_assets/img/brands-compact.png',
+        primaryColor:    '#1BB398'
+      },
+      prefill: loginHint ? { email: loginHint, username: loginHint } : null,
+      closable: false,
+      allowSignUp: !config.extraParams.prevent_sign_up,
+      rememberLastLogin: !config.extraParams.prevent_remember,
+      // uncomment if you want small buttons for social providers
+      socialButtonStyle: 'small',
+      languageDictionary: {
+        emailInputPlaceholder: 'Email Address',
+        passwordInputPlaceholder: 'Password',
+        usernameOrEmailInputPlaceholder: 'Email Address or Username',
+        usernameInputPlaceholder: 'Username',
+        forgotPasswordAction: 'Having issues logging in? Reset your password here.',
+        error : {
+          login: { 
+            "lock.invalid_email_password": "Invalid Email, Username, or Password. If this problem persists, you might need to try resetting your password.",
+            "lock.invalid_username_password": "Invalid Email, Username, or Password. If this problem persists, you might need to try resetting your password."
+           }
+        }
+      }
+    });
+    
+    // Load Custom CSS after Auth's CSS.
+    var customCSS = document.createElement('link');
+    customCSS.rel = "stylesheet";
+    customCSS.href = "https://s3.amazonaws.com/demo-ad-login/_assets/css/auth-hosted.css";
+    var headElement = document.getElementsByTagName("head");
+    headElement[0].appendChild(customCSS);
+    // End Custom CSS.
+    
+    lock.show();
+    
+	</script>
+	<style type="text/css">
+		.auth0-lock.auth0-lock .auth0-lock-header-logo {
+			height: auto;
+			margin-top: 24px;
+			width: 70%;
+			display: inline-block;
+			margin-left: -20px;
+		}
+	</style>
+</body>
+
+</html>

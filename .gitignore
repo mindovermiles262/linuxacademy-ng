@@ -1,0 +1,8 @@
+# MacOS
+.DS_Store
+
+# vim
+*.swp
+
+*.mp4
+.env*

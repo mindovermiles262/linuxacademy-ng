@@ -1,0 +1,10 @@
+# Parsing
+
+Requires PHPSESSIONID cookie
+
+# End Goals
+
+- [ ] Obtain course page
+- [ ] Open all lesson links
+- [ ] Parse lesson links for `.m3u8` URLs
+- [ ] Append URLs to list to pass to download

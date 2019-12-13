@@ -1,0 +1,22 @@
+POST https://login.linuxacademy.com/usernamepassword/login
+
+{
+  "client_id": "KaWxNn1C2Gc7n83W9OFeXltd8Utb5vvx",
+  "redirect_uri": "https://linuxacademy.com/cp/ssologin",
+  "tenant": "lacausers",
+  "response_type": "token id_token",
+  "connection": "Username-Password-Authentication",
+  "username": "me@myself.com",
+  "password": "thisismypassword",
+  "nonce": "7lVxFgNDeKxvHx2rz0lKIr-sdH8JKIad",
+  "state": "g6Fo2SBua3dDV0k4UG1KVXZyTWRMNkFhbTdSUVJRblRlTHp0dKN0aWTZIFk2NEdhQ294WEt5T0E1NV9lNTByWmt6eXczVDIxU3k4o2NpZNkgS2FXeE5uMUMyR2M3bjgzVzlPRmVYbHRkOFV0YjV2dng",
+  "sso": true,
+  "_intstate": "deprecated",
+  "_csrf": "AKE9NMvj-bnJAmKAfOFoluyJlCCHM6vuSX6Y",
+  "audience": "https://linuxacademy.com",
+  "auth0Client": "eyJuYW1lIjoiYXV0aDAuanMiLCJ2ZXJzaW9uIjoiOS40LjEifQ==",
+  "scope": "openid email user_impersonation profile",
+  "protocol": "oauth2",
+  "sign_up": "false"
+}
+
